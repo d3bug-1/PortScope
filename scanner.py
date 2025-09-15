@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
 """
 Advanced port scanner (TCP/UDP) v1.0 — by D3bug (enhanced)
-
-Behavior:
- - If run with no arguments: prints ASCII banner and exits.
- - If run with '-h' or '--help': prints custom help (no 'usage:' line) and exits.
- - If run with any other arguments (e.g., a target): performs the scan.
 """
 
 from __future__ import annotations
@@ -204,7 +199,7 @@ class Scanner:
         self.args = args
         self.lock = Lock()
         self.completed = 0
-        self.open_ports = []  # tuples: (proto, port, info)
+        self.open_ports = []
         self.stop_event = Event()
         self.logger = logging.getLogger("scanner")
         self.addr_infos = []
@@ -468,7 +463,7 @@ def build_args_from_argv():
     parser = argparse.ArgumentParser(
         prog="scanner.py",
         description="Fast concurrent TCP/UDP port scanner (IPv4/IPv6).",
-        add_help=False  # we handle -h/--help manually to print custom help
+        add_help=False
     )
     parser.add_argument("target", help="Target hostname or IP address")
     parser.add_argument("--ports", "-p", default="1-1024",
@@ -498,12 +493,10 @@ def build_args_from_argv():
     parser.add_argument("--no-color", dest="color", action="store_false", help="Disable ANSI color output")
     parser.add_argument("--preset-show", action="store_true", help="Show available presets and exit")
     parser.add_argument("--max-open-warning", type=int, default=500, help="Warn if too many open ports found (safety)")
-    # Keep compatibility: accept -h/--help but we intercept earlier
     parser.add_argument("-h", "--help", action="store_true", help=argparse.SUPPRESS)
     return vars(parser.parse_args())
 
 def main():
-    # Intercept -h/--help early to print custom help without 'usage:' line
     if '-h' in sys.argv or '--help' in sys.argv:
         print(CUSTOM_HELP.strip())
         return
