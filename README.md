@@ -12,7 +12,7 @@ pipelines.
 
 ---
 
-## 🔥 Key features
+## Key features
 - High-concurrency scanning using `ThreadPoolExecutor` with configurable worker count.  - IPv4 and IPv6 address resolution and scanning.  - TCP connect scans with optional banner 
 grabbing for service identification.  - Best-effort UDP probing for services that respond to datagrams.  - Flexible port selection: ranges, comma-separated lists, and presets 
 (`common`, `top100`, `top1000`).  - Tunable timeouts, retries, and exponential backoff.  - Rate limiting and worker-capping to reduce accidental load on targets and the scanner host.  
@@ -21,13 +21,18 @@ standard-library implementation for portability and auditability.
 
 ---
 
-## 📦 Installation
+## Installation
 
 Clone the repositorty
 ```bash git clone https://github.com/d3bug-1/PortScope.git cd PortScope
+```
 
 
+## Command-line options — full reference
 
+positional: target (hostname or IP)
+```bash python3 scanner.py example.com or 192.0.0.1
+```
 
 #!/usr/bin/env bash
 # PortScope — Command-line options reference (examples)
