@@ -23,9 +23,15 @@ standard-library implementation for portability and auditability.
 
 ## Installation
 
-Clone the repositorty
+- Clone the repositorty
 ```bash
- git clone https://github.com/d3bug-1/PortScope.git
+git clone https://github.com/d3bug-1/PortScope.git
+
+```
+And then
+
+```bash
+$ cd PortScope
 
 ```
 
@@ -33,106 +39,175 @@ Clone the repositorty
 
 positional: target (hostname or IP)
 ```bash
- python3 scanner.py example.com or 192.0.0.1
+python3 scanner.py example.com or 192.0.0.1
 
 ```
-#!/usr/bin/env bash
-# PortScope — Command-line options reference (examples)
-# Copy-paste individual lines to try them (replace <target> with host/IP).
 
-# positional: target (hostname or IP)
-# Example:
-python3 scanner.py example.com
+`--ports`, `-p` PORTS : ports to scan (comma-separated and/or ranges)
 
-# --ports, -p PORTS : ports to scan (comma-separated and/or ranges)
-# Example:
+```bash
 python3 scanner.py example.com --ports 22,80,443
 python3 scanner.py example.com --ports 1-1024
 
-# --preset {common,top100,top1000} : use a predefined port set
-# Example:
+```
+
+
+`--preset` {common,top100,top1000} : use a predefined port set
+
+```bash
 python3 scanner.py 8.8.8.8 --preset common
 
-# --timeout, -t TIMEOUT : socket connect timeout in seconds (float)
-# Example:
+```
+
+
+`--timeout`, `-t` TIMEOUT : socket connect timeout in seconds (float)
+
+```bash
 python3 scanner.py example.com --timeout 0.5
 
-# --autoset-timeout : auto-tune timeout using quick sample connects (best-effort)
-# Example:
+```
+
+
+`--autoset-timeout` : auto-tune timeout using quick sample connects (best-effort)
+
+```bash
 python3 scanner.py example.com --autoset-timeout
 
-# --workers, -w WORKERS : concurrent worker threads (capped by system limits)
-# Example:
+```
+
+
+`--workers`, `-w` WORKERS : concurrent worker threads (capped by system limits)
+
+```bash
 python3 scanner.py example.com --workers 400
 
-# --rate RATE : delay (seconds) between task submissions (simple pacing)
-# Example:
+```
+
+`--rate RATE` : delay (seconds) between task submissions (simple pacing)
+
+```bash
 python3 scanner.py example.com --ports 1-1000 --rate 0.01
 
-# --retries N : number of attempts per check (default 1)
-# Example:
+```
+
+
+`--retries N` : number of attempts per check (default 1)
+
+```bash
 python3 scanner.py example.com --ports 80 --retries 3
 
-# --backoff S : base backoff seconds for retries (exponential)
-# Example:
+```
+
+
+`--backoff S` : base backoff seconds for retries (exponential)
+
+```bash
 python3 scanner.py example.com --ports 80 --retries 3 --backoff 2
 
-# --grab-banner : attempt to read a small banner after TCP connect
-# Example:
+```
+
+ `--grab-banner` : attempt to read a small banner after TCP connect
+
+```bash
 python3 scanner.py example.com --ports 21,22,80 --grab-banner
 
-# --udp : enable UDP probing (best-effort)
-# Example:
+```
+
+`--udp` : enable UDP probing (best-effort)
+
+```bash
 python3 scanner.py example.com --udp --ports 53,123
 
-# --tcp : enable TCP scanning (default if neither --tcp nor --udp specified)
-# Example:
+```
+
+`--tcp` : enable TCP scanning (default if neither --tcp nor --udp specified)
+
+```bash
 python3 scanner.py example.com --tcp --ports 22,80
 
-# --udp-only : scan only UDP ports (implies --udp)
-# Example:
+```
+
+`--udp-only` : scan only UDP ports (implies --udp)
+
+```bash
 python3 scanner.py example.com --udp-only --ports 53,161
 
-# --tcp-only : scan only TCP ports (implies --tcp)
-# Example:
+```
+
+
+`--tcp-only` : scan only TCP ports (implies --tcp)
+
+```bash
 python3 scanner.py example.com --tcp-only --ports 1-1024
 
-# --ipv6 : prefer/allow IPv6 resolution and scanning
-# Example (use brackets for IPv6 addresses in many shells):
+```
+
+
+`--ipv6` : prefer/allow IPv6 resolution and scanning
+
+```bash
 python3 scanner.py [2001:db8::1] --ipv6 --ports 22,80
 
-# --show-closed : print closed ports as they are checked (verbose)
-# Example:
+```
+
+
+`--show-closed` : print closed ports as they are checked (verbose)
+
+```bash
 python3 scanner.py example.com --ports 1-200 --show-closed
 
-# --verbose, -v : verbose mode (progress/debug messages)
-# Example:
+```
+`--verbose`, `-v` : verbose mode (progress/debug messages)
+
+```bash
 python3 scanner.py example.com --verbose
 
-# --no-color : disable ANSI color output (useful for logs)
-# Example:
+```
+
+
+`--no-color` : disable ANSI color output (useful for logs)
+
+```bash
 python3 scanner.py example.com --no-color
 
-# --output, -o FILE : save results to a file (.json or .csv). If no ext -> .json appended
-# Examples:
+```
+
+`--output`, `-o` FILE : save results to a file (.json or .csv). If no ext -> .json appended
+
+```bash
 python3 scanner.py example.com --ports 1-500 -o results.json
 python3 scanner.py example.com --ports 1-500 -o results.csv
 python3 scanner.py example.com --ports 1-500 -o scan_output        # saved as scan_output.json
 
-# --preset-show : print available preset port lists and exit
-# Example:
+```
+
+`--preset-show` : print available preset port lists and exit
+
+```bash
 python3 scanner.py --preset-show
 
-# --version : show program version and exit
-# Example:
+```
+
+`--version` : show program version and exit
+
+```bash
 python3 scanner.py --version
 
-# --max-open-warning N : warn if more than N open ports are found
-# Example:
+```
+
+
+`--max-open-warning N` : warn if more than N open ports are found
+
+```bash
 python3 scanner.py example.com --max-open-warning 200
 
-# Combined example (real-world):
-# aggressive full-TCP scan, banner grabbing, save JSON, moderate rate:
+```
+
+
+- Combined example (real-world):
+aggressive full-TCP scan, banner grabbing, save JSON, moderate rate:
+
+```bash
 python3 scanner.py example.com --ports 1-65535 --workers 400 --timeout 0.5 --grab-banner -o example_scan.json --rate 0.005
 
-# End of CLI reference block.
+```
