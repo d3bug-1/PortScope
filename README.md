@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
+
 # PortScope v1.0
 
 **PortScope** — Fast concurrent TCP/UDP port scanner with IPv4/IPv6 support, banner grabbing, and safe defaults.
