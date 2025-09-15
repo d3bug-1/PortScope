@@ -1,7 +1,14 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-
 # PortScope v1.0
+
+<p align="center">
+  <img src="https://i.postimg.cc/3RWbxsst/Screenshot-From-2025-09-15-13-03-14.png" alt="PortScope screenshot" width="700">
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.8%2B-blue.svg"></a>
+  <a href="https://github.com/d3bug-1/PortScope/stargazers"><img src="https://img.shields.io/github/stars/d3bug-1/PortScope?style=social"></a>
+</p>
 
 **PortScope** — Fast concurrent TCP/UDP port scanner with IPv4/IPv6 support, banner grabbing, and safe defaults.
 
