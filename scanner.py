@@ -22,7 +22,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock, Event
 from typing import List, Tuple, Optional
 
-# ---------------------- ASCII banner / authorization reminder ----------------------
+# ASCII banner
 ASCII_BANNER = r"""
     ____             __     _____                                     _    _____
    / __ \____  _____/ /_   / ___/_________ _____  ____  ___  _____   | |  / <  /
@@ -37,19 +37,18 @@ ASCII_BANNER = r"""
  -----------------------------------------------------------------------------
 """
 
-# ---------------------- Show banner if no args ----------------------
 if len(sys.argv) == 1:
     print(ASCII_BANNER)
     sys.exit(0)
 
-# ---------------------- Presets ----------------------
+# Presets
 PRESETS = {
     "common": "20,21,22,23,25,53,67,68,80,110,111,123,135,137-139,143,161,389,443,445,3306,3389,5900,8080",
     "top100": "1-1024,1433,1521,2049,2375,2376,27017,5000,5432,5900,8000-8100,9000-9100",
     "top1000": "1-2000,3306,3389,5000,5432,5900,8000-8100,9000-9100",
 }
 
-# ---------------------- Custom help (no `usage:` line) ----------------------
+# Custom help
 CUSTOM_HELP = """
 port scanner v1.0 — Fast concurrent TCP/UDP port scanner (IPv4/IPv6) by D3bug.
 
@@ -87,7 +86,7 @@ Examples:
   python3 scanner.py example.com --preset common --grab-banner --output result.json
 """
 
-# ---------------------- Utilities ----------------------
+# Utilities
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
@@ -131,7 +130,7 @@ def resolve_target(target: str, prefer_ipv6: bool=False) -> List[Tuple]:
 def human_time():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-# ---------------------- Socket helpers ----------------------
+#  Socket helper
 def tcp_connect_and_banner(sockaddr, port, timeout, grab_banner=False, banner_len=1024, probe_bytes: Optional[bytes]=None):
     family, addr = sockaddr
     s = None
@@ -199,7 +198,7 @@ def udp_probe(sockaddr, port, timeout, payload: Optional[bytes]=b''):
                 pass
         return False, str(e)
 
-# ---------------------- Scanner class ----------------------
+# Scanner class
 class Scanner:
     def __init__(self, args):
         self.args = args
@@ -464,7 +463,7 @@ class Scanner:
                 json.dump(data, fh, indent=2)
             print(f"[+] Results written to {out}.json (defaulted to JSON)")
 
-# ---------------------- CLI parsing (no auto -h handling) ----------------------
+#  CLI parsing
 def build_args_from_argv():
     parser = argparse.ArgumentParser(
         prog="scanner.py",
