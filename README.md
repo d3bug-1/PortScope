@@ -24,15 +24,13 @@ standard-library implementation for portability and auditability.
 ## Installation
 
 Clone the repositorty
-```bash git clone https://github.com/d3bug-1/PortScope.git cd PortScope
-```
+```bash git clone https://github.com/d3bug-1/PortScope.git
 
 
 ## Command-line options — full reference
 
 positional: target (hostname or IP)
 ```bash python3 scanner.py example.com or 192.0.0.1
-```
 
 #!/usr/bin/env bash
 # PortScope — Command-line options reference (examples)
