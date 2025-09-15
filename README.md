@@ -38,7 +38,7 @@ standard-library implementation for portability and auditability.
 git clone https://github.com/d3bug-1/PortScope.git
 
 ```
-And then
+And then:
 
 ```bash
 $ cd PortScope
